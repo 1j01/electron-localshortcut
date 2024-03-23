@@ -156,6 +156,7 @@ function register(win, accelerator, callback) {
 		wc = ANY_WINDOW;
 		callback = accelerator;
 		accelerator = win;
+		win = null;
 	} else {
 		wc = win.webContents;
 	}
@@ -169,7 +170,7 @@ function register(win, accelerator, callback) {
 		return;
 	}
 
-	debug(`Registering callback for ${accelerator} on window ${title(win)}`);
+	debug(`Registering callback for ${accelerator} on ${win ? `window "${title(win)}"` : `all windows`}`);
 	_checkAccelerator(accelerator);
 
 	debug(`${accelerator} seems a valid shortcut sequence.`);
